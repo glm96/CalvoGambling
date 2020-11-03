@@ -1,0 +1,9 @@
+## Interface: 90001
+## X-Min-Interface: 90001
+## Title: CalvoGambling
+## Author: Gonzalo Luque
+## Version: 1.0
+## SavedVariables: Gon_Env
+## Notes: A hub for all your gold gambling ingame
+
+CalvoGambling.lua
