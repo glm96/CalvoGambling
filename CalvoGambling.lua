@@ -49,6 +49,7 @@ local function resetGame ()
     GAME_AMOUNT = -1
     PLAYERLIST = {}
     currentChannel = channels["default"]
+    GameFrame:UnregisterAllEvents()
 end
 
 local function startSignUp ()
@@ -219,6 +220,15 @@ local function printUsage ()
     )
 end
 
+local function whosLeft ()
+    for player, roll in pairs(PLAYERLIST) do
+        if roll < 0 then
+            local body = "Player " .. player .. " still needs to roll"
+			sendMessage(body, currentChannel)
+        end
+    end
+end
+
 local function CalvoGambling_SlashCmd (param)
     if not SavedVariablesLoaded then
         print("Please wait a second while the addon loads")
@@ -233,6 +243,7 @@ local function CalvoGambling_SlashCmd (param)
         link = linkChar,
         unlink = unlinkChar,
         resetstats = resetStats,
+		whosleft = whosLeft,
     }
     local params = stringSplit(param)
     local opt = params[1] and params[1]:lower() or nil
